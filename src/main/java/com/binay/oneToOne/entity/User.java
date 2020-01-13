@@ -3,14 +3,16 @@ package com.binay.oneToOne.entity;
 import javax.persistence.*;
 
 @Entity
-public class Mobile {
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String brand;
-    private Long phoneNum;
+
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    private Address adress;
 
     public Long getId() {
         return id;
@@ -28,19 +30,11 @@ public class Mobile {
         this.name = name;
     }
 
-    public String getBrand() {
-        return brand;
+    public Address getAdress() {
+        return adress;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public Long getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(Long phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setAdress(Address adress) {
+        this.adress = adress;
     }
 }

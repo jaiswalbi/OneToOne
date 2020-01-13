@@ -2,6 +2,12 @@ package com.binay.oneToOne.entity;
 
 import javax.persistence.*;
 
+/*
+ * unidirectional relation, connect table from employee but cannot access from mobile.
+ *
+ * */
+
+
 @Entity
 public class Employee {
 
@@ -13,8 +19,8 @@ public class Employee {
     private String companyName;
     private String address;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "employee_id")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "mobile_id")
     private Mobile mobile;
 
     public Long getEmployee_id() {
